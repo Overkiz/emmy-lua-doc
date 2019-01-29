@@ -20,6 +20,10 @@ local Iterator = {}
 ---@return any
 function Iterator:get(type) end
 
+---@param type string
+---@param value any
+function Iterator:push(type, value) end
+
 --------------------------------------------------------------------------------
 ---@class Overkiz.Bus.Object.Call
 local Call = {}
