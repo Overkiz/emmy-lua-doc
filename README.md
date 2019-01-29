@@ -1,8 +1,8 @@
 # emmy-lua-doc
 
-This repo is intended for developper using IntelliJ with EmmyLua plugin.
+This repo is intended for developers using IntelliJ with the [EmmyLua plugin](https://github.com/EmmyLua/IntelliJ-EmmyLua).
 
-It add some lint for Overkiz libraries.
+It makes linting and static analysis much better for Overkiz libraries by providing annotated stubs.
 
 # Configuration
 
