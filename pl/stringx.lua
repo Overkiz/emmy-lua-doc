@@ -111,7 +111,7 @@ function stringx.rfind (s, sub, first, last) end
 --- @param new string the substitution
 --- @param n number optional maximum number of substitutions (optional)
 --- @return string
---- @overload(s: string, old: string, new: string)
+--- @overload fun(s: string, old: string, new: string)
 function stringx.replace (s, old, new, n) end
 
 --- count all instances of substring in string.
