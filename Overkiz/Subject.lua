@@ -5,7 +5,7 @@ local Subject = {}
 --- @field public notified fun(...)
 local Listener = {}
 
---- @vararg any args to be send to listener
+--- @vararg any @args to be send to listener
 function Subject:notify(...) end
 
 --- @param listener fun(...)|Overkiz.Listener
