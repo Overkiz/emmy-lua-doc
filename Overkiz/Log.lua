@@ -17,6 +17,9 @@ function Log:info(msg) end
 function Log:notice(msg) end
 
 --- @param msg string log message
+function Log:critical(msg) end
+
+--- @param msg string log message
 function Log:fatal(msg) end
 
 return Log
