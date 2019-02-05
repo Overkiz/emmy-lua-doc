@@ -133,43 +133,40 @@ function stringx.count (s, sub) end
 function stringx.ljust (s, w, ch) end
 
 --- right-justify s with width w.
---- @params string the string
---- @paramw int width of justification
---- @paramch string padding character (default ' ')
+--- @param s string the string
+--- @param w number width of justification
+--- @param ch string padding character (default ' ')
 --- @return string
 --- @overload fun(s: string)
 --- @overload fun(s: string, w:number)
 function stringx.rjust (s, w, ch) end
 
 --- center-justify s with width w.
---- @params string the string
---- @paramw int width of justification
---- @paramch string padding character (default ' ')
+--- @param s string the string
+--- @param w number width of justification
+--- @param ch string padding character (default ' ')
 --- @return string
 --- @overload fun(s: string)
 --- @overload fun(s: string, w:number)
 function stringx.center (s, w, ch) end
 
 --- trim any whitespace on the left of s.
---- @params string the string
---- @paramchrs string default any whitespace character, but can be a string of
---- characters to be trimmed (default '%s')
+--- @param s string the string
+--- @param chrs string default any whitespace character, but can be a string of characters to be trimmed (default '%s')
 --- @return string
 --- @overload fun(s: string)
 function stringx.lstrip (s, chrs) end
 
 --- trim any whitespace on the right of s.
---- @params string the string
---- @param chrs string default any whitespace character, but can be a string
---- of characters to be trimmed (default '%s')
+--- @param s string the string
+--- @param chrs string default any whitespace character, but can be a string of characters to be trimmed (default '%s')
 --- @return string
 --- @overload fun(s: string)
 function stringx.rstrip (s, chrs) end
 
 --- trim any whitespace on both left and right of s.
---- @params string the string
---- @paramchrs string default any whitespace character, but can be a string
---- of characters to be trimmed (default '%s')
+--- @param s string the string
+--- @param chrs string default any whitespace character, but can be a string of characters to be trimmed (default '%s')
 --- @return string
 --- @overload fun(s: string)
 function stringx.strip (s, chrs) end
@@ -178,22 +175,22 @@ function stringx.strip (s, chrs) end
 --------------------------------------------------------------------------------
 
 --- split a string using a pattern. Note that at least one value will be returned!
---- @params string the string
---- @paramre string a Lua string pattern (defaults to whitespace) (default '%s')
+--- @param s string the string
+--- @param re string a Lua string pattern (defaults to whitespace) (default '%s')
 --- @return string the parts of the string
 function stringx.splitv (s, re) end
 
 --- partition the string using first occurance of a delimiter
---- @params string the string
---- @paramch string delimiter
+--- @param s string the string
+--- @param ch string delimiter
 --- @return string part before ch
 --- @return string ch
 --- @return string part after ch
 function stringx.partition (s, ch) end
 
 --- partition the string p using last occurance of a delimiter
---- @params string the string
---- @paramch string delimiter
+--- @param s string the string
+--- @param ch string delimiter
 --- @return string part before ch
 --- @return string ch
 --- @return string part after ch
@@ -201,7 +198,7 @@ function stringx.rpartition (s, ch) end
 
 --- return the ‘character’ at the index.
 --- @param s string the string
---- @parami dx int an index (can be negative)
+--- @param idx number an index (can be negative)
 --- a substring of length 1 if successful, empty string otherwise.
 function stringx.at (s, idx) end
 
@@ -209,12 +206,12 @@ function stringx.at (s, idx) end
 --------------------------------------------------------------------------------
 
 --- return an iterator over all lines in a string
---- @params string the string
+--- @param s string the string
 --- @return pl.List
 function stringx.lines (s) end
 
 --- iniital word letters uppercase (‘title case’). Here ‘words’ mean chunks of non-space characters.
---- @params string the string
+--- @param s string the string
 --- @return string a string with each word’s first letter uppercase
 function stringx.title (s) end
 
