@@ -6,9 +6,7 @@ local path = {}
 --- @param p1 string A file path
 --- @param p2 string A file path
 --- @vararg string @more file paths
-function path.join(p1,p2,...)
-
-end
+function path.join(p1, p2, ...) end
 
 
 return path
