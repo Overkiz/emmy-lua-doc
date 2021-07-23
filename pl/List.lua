@@ -1,13 +1,19 @@
 local tablex = require 'pl.tablex'
 
---- @class pl.List
+--- @class pl_List
+--- @overload fun():pl_List
+--- @overload fun(values:any[]):pl_List
 local List = {}
+
+--- Construct a new list with given values.
+--- @param values any[] A List of values
+function List:new(values) end
 
 --- Apply a function to all elements.
 --- Any extra arguments will be passed to the function.
 --- @param fun fun(a:any):any a function of at least one argument
 --- @vararg any @arbitrary extra arguments.
---- @return pl.List a new list: {f(x) for x in self}
+--- @return pl_List a new list: {f(x) for x in self}
 function List:map(fun, ...) end
 
 --- Make a copy of an existing list.
@@ -17,38 +23,38 @@ function List:clone() end
 
 --- Add an item to the end of the list.
 --- @param i any An item
---- @return pl.List the list
+--- @return pl_List the list
 function List:append(i) end
 
 --- Extend the list by appending all the items in the given list.
 --- equivalent to 'a[len(a):] = L'.
---- @param L pl.List Another List
---- @return pl.List the list
+--- @param L pl_List Another List
+--- @return pl_List the list
 function List:extend(L) end
 
 --- Insert an item at a given position. i is the index of the
 --- element before which to insert.
 --- @param i number index of element before whichh to insert
 --- @param x any A data item
---- @return pl.List the list
+--- @return pl_List the list
 function List:insert(i, x) end
 
 --- Insert an item at the begining of the list.
 --- @param x any A data item
---- @return pl.List the list
+--- @return pl_List the list
 function List:put(x) end
 
 --- Remove an element given its index.
 --- (equivalent of Python's del s[i])
 --- @param i number the index
---- @return pl.List the list
+--- @return pl_List the list
 function List:remove(i) end
 
 --- Remove the first item from the list whose value is given.
 --- (This is called 'remove' in Python; renamed to avoid confusion with table.remove)
 --- Return nil if there is no such item.
 --- @param x any A data value
---- @return pl.List the list
+--- @return pl_List the list
 function List:remove_value(x) end
 
 --- Remove the item at the given position in the list, and return it.
@@ -74,19 +80,19 @@ function List:contains(x) end
 function List:count(x) end
 
 --- Sort the items of the list, in place.
---- @overload fun():pl.List
+--- @overload fun():pl_List
 --- @param cmp string|fun(a:any, b:any):number an optional comparison function or operator char
---- @return pl.List the list
+--- @return pl_List the list
 function List:sort(cmp) end
 
 --- Return a sorted copy of this list.
---- @overload fun():pl.List
+--- @overload fun():pl_List
 --- @param cmp string|fun(a:any, b:any):number an optional comparison function or operator char
---- @return pl.List a new list
+--- @return pl_List a new list
 function List:sorted(cmp) end
 
 --- Reverse the elements of the list, in place.
---- @return pl.List the list
+--- @return pl_List the list
 function List:reverse() end
 
 --- Return the minimum and the maximum value of the list.
@@ -99,20 +105,20 @@ function List:minmax() end
 --- eg. slice(-2) gives last 2 entries in a list, and slice(-4,-2) gives from -4th to -2nd
 --- @param first number An index
 --- @param last number An index
---- @return pl.List a new list
+--- @return pl_List a new list
 function List:slice(first,last) end
 
 --- Empty the list.
---- @return pl.List the list
+--- @return pl_List the list
 function List:clear() end
 
 --- Emulate Python's range(x) function.
 --- Include it in List table for tidiness
---- @overload fun(start:number, finish:number):pl.List
+--- @overload fun(start:number, finish:number):pl_List
 --- @param start number A number
 --- @param finish number A number greater than start; if absent, then start is 1 and finish is start
 --- @param incr number an increment (may be less than 1)
---- @return pl.List a List from start .. finish
+--- @return pl_List a List from start .. finish
 function List.range(start,finish,incr) end
 
 --- list:len() is the same as #list.
@@ -124,36 +130,36 @@ function List:len() end
 --- equivalent to 'del s[i1:i2]' in Python.
 --- @param i1 number start of range
 --- @param i2 number end of range
---- @return pl.List the list
+--- @return pl_List the list
 function List:chop(i1,i2) end
 
 --- Insert a sublist into a list
 --- equivalent to 's[idx:idx] = list' in Python
 --- @param idx number index
---- @param list pl.List to insert
---- @return pl.List the list
+--- @param list pl_List to insert
+--- @return pl_List the list
 function List:splice(idx,list) end
 
 --- General slice assignment s[i1:i2] = seq.
 --- @param i1 number  start index
 --- @param i2 number  end index
---- @param seq pl.List a list
---- @return pl.List the list
+--- @param seq pl_List a list
+--- @return pl_List the list
 function List:slice_assign(i1,i2,seq) end
 
 --- Concatenation operator.
---- @param L pl.List another List
---- @return pl.List a new list consisting of the list with the elements of the new list appended
+--- @param L pl_List another List
+--- @return pl_List a new list consisting of the list with the elements of the new list appended
 function List:__concat(L) end
 
 --- Equality operator ==.  True iff all elements of two lists are equal.
---- @param L pl.List another List
+--- @param L pl_List another List
 --- @return boolean
 function List:__eq(L) end
 
 --- Join the elements of a list using a delimiter.
 --- This method uses tostring on all elements.
---- @overload fun():pl.List
+--- @overload fun():pl_List
 --- @param delim string an optional delimiter string, default is empty string.
 --- @return string
 function List:join(delim) end
@@ -161,7 +167,7 @@ function List:join(delim) end
 List.concat = table.concat
 
 --- How our list should be rendered as a string. Uses join().
---- @see pl.List#join
+--- @see pl_List#join
 function List:__tostring() end
 
 --- Call the function on each element of the list.
@@ -175,17 +181,17 @@ function List:foreach(fun,...) end
 function List:foreachm(name,...) end
 
 --- Create a list of all elements which match a function.
---- @overload fun(func:fun(a:any, b:any):boolean):pl.List
+--- @overload fun(func:fun(a:any, b:any):boolean):pl_List
 --- @param func fun(a:any, b:any):boolean a boolean function
 --- @param arg any an argument to be passed as second argument of the predicate
---- @return pl.List a new filtered list.
+--- @return pl_List a new filtered list.
 function List:filter(func,arg) end
 
 --- Split a string using a delimiter.
---- @overload fun(s:string):pl.List
+--- @overload fun(s:string):pl_List
 --- @param s string the string
 --- @param delim string delimiter string/pattern (default: '%s+')
---- @return pl.List a List of strings
+--- @return pl_List a List of strings
 --- @see pl.utils.split
 function List.split(s,delim) end
 
@@ -193,7 +199,7 @@ function List.split(s,delim) end
 --- Any extra arguments will be passed to the function.
 --- @param fun function a function of at least one argument
 --- @vararg any @arbitrary extra arguments.
---- @return pl.List a new list: {f(x) for x in self}
+--- @return pl_List a new list: {f(x) for x in self}
 --- @see pl.tablex.imap
 function List:map(fun,...) end
 
@@ -201,15 +207,15 @@ function List:map(fun,...) end
 --- Any extra arguments are passed to the function.
 --- @param fun function A function that takes at least one argument
 --- @vararg any @arbitrary extra arguments.
---- @return pl.List the list.
+--- @return pl_List the list.
 function List:transform(fun,...) end
 
 --- Apply a function to elements of two lists.
 --- Any extra arguments will be passed to the function
 --- @param fun function a function of at least two arguments
---- @param ls pl.List another list
+--- @param ls pl_List another list
 --- @vararg any @arbitrary extra arguments.
---- @return pl.List a new list: {f(x,y) for x in self, for x in arg1}
+--- @return pl_List a new list: {f(x,y) for x in self, for x in arg1}
 --- @see pl.tablex.imap2
 function List:map2(fun,ls,...) end
 
@@ -217,7 +223,7 @@ function List:map2(fun,ls,...) end
 --- Any extra arguments will be passed to the method.
 --- @param name string name of method
 --- @vararg any @extra arguments
---- @return pl.List a new list of the results
+--- @return pl_List a new list of the results
 --- @see pl.seq.mapmethod
 function List:mapm(name,...) end
 
@@ -231,7 +237,7 @@ function List:reduce(fun) end
 --- The function may return nil, but this will be converted to the string key '<nil>'.
 --- @param fun function a function of at least one argument
 --- @vararg any @will also be passed to the function
---- @return pl.MultiMap a table where the keys are the returned values, and the values are Lists
+--- @return pl_MultiMap a table where the keys are the returned values, and the values are Lists
 --- of values where the function returned that key.
 --- @see pl.MultiMap
 function List:partition(fun,...) end

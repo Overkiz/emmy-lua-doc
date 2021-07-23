@@ -1,7 +1,7 @@
 --- Path manipulation and file queries.
 ---
 --- This is modelled after Python's os.path library (10.1); see @{04-paths.md|the Guide}.
---- @class pl.path
+--- @class pl_path
 --- @field public is_windows boolean Are we running Windows ?
 --- @field public sep string Path separator for this platform.
 --- @field public dirsep string Separator for PATH for this platform.
@@ -78,10 +78,11 @@ function path.getctime(P) end
 function path.splitpath(P) end
 
 --- Return an absolute path.
+--- @overload fun(P:string):string
 --- @param P string A file path
 --- @param pwd string optional start path to use (default is current dir)
 --- @return string The absolute path.
-function path.abspath(P,pwd) end
+function path.abspath(P, pwd) end
 
 --- Given a path, return the root part and the extension part.
 --- if there's no extension part, the second value will be empty
@@ -116,9 +117,9 @@ function path.isabs(P) end
 --- @param p2 string A file path
 --- @vararg string more file paths
 --- @return string The combined path
---- @usage
+--- usage:
 --- plpath.join("foo", "bar") -- foo/bar
-function path.join(p1,p2,...) end
+function path.join(p1, p2, ...) end
 
 --- Normalize the case of a pathname. On Unix, this returns the path unchanged;
 --- for Windows, it converts the path to lowercase, and it also converts forward slashes
@@ -137,7 +138,7 @@ function path.normpath(P) end
 --- @param P string A path
 --- @param start string Optional start point (default current directory)
 --- @return string The relative path
-function path.relpath (P,start) end
+function path.relpath (P, start) end
 
 --- Replace a starting '~' with the user's home directory.
 --- In windows, if HOME isn't set, then USERPROFILE is used in preference to
@@ -149,13 +150,13 @@ function path.expanduser(P) end
 --- Return a suitable full path to a new temporary file name.
 --- unlike os.tmpnam(), it always gives you a writeable path (uses TEMP environment variable on Windows)
 --- @return string A temporary file name
-function path.tmpname () end
+function path.tmpname() end
 
 --- Return the largest common prefix path of two paths.
 --- @param path1 string a file path
 --- @param path2 string a file path
 --- @return string
-function path.common_prefix (path1,path2) end
+function path.common_prefix(path1, path2) end
 
 --- Return the full path where a particular Lua module would be found.
 --- Both package.path and package.cpath is searched, so the result may

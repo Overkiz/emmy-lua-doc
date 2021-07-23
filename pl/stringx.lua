@@ -61,7 +61,7 @@ function stringx.join (s, seq) end
 --- @param s string the string.
 --- @param keep_ends boolean include line ends. (optional)
 --- @overload fun(s: string)
---- @return pl.List
+--- @return pl_List
 function stringx.splitlines (s, keep_ends) end
 
 --- split a string into a list of strings using a delimiter.
@@ -70,7 +70,7 @@ function stringx.splitlines (s, keep_ends) end
 --- @param n number maximum number of results (optional)
 --- @overload fun(s: string)
 --- @overload fun(s: string, re: string)
---- @return pl.List
+--- @return pl_List
 function stringx.split (s, re, n) end
 
 --- replace all tabs in s with tabsize spaces. If not specified, tabsize defaults
@@ -183,17 +183,13 @@ function stringx.splitv (s, re) end
 --- partition the string using first occurance of a delimiter
 --- @param s string the string
 --- @param ch string delimiter
---- @return string part before ch
---- @return string ch
---- @return string part after ch
+--- @return string, string, string part before ch, ch, part after ch
 function stringx.partition (s, ch) end
 
 --- partition the string p using last occurance of a delimiter
 --- @param s string the string
 --- @param ch string delimiter
---- @return string part before ch
---- @return string ch
---- @return string part after ch
+--- @return string, string, string part before ch, ch, part after ch
 function stringx.rpartition (s, ch) end
 
 --- return the ‘character’ at the index.
@@ -207,7 +203,7 @@ function stringx.at (s, idx) end
 
 --- return an iterator over all lines in a string
 --- @param s string the string
---- @return pl.List
+--- @return pl_List
 function stringx.lines (s) end
 
 --- iniital word letters uppercase (‘title case’). Here ‘words’ mean chunks of non-space characters.

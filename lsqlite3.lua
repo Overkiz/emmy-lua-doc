@@ -1,7 +1,7 @@
 local sqlite3 = {}
 
 --------------------------------------------------------------------------------
---- @class sqlite3.Statement
+--- @class sqlite3_Statement
 local Statement = {}
 
 --- Binds the given values to statement parameters. The function returns
@@ -17,11 +17,11 @@ function Statement:bind_values(...) end
 function Statement:finalize() end
 
 --------------------------------------------------------------------------------
---- @class sqlite3.Database
+--- @class sqlite3_Database
 local Database = {}
 
 --- @param sql string Sql query
---- @return sqlite3.Statement
+--- @return sqlite3_Statement
 function Database:prepare(sql) end
 
 --------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ function sqlite3.complete(sql) end
 --- should be used for all further method calls in connection with this
 --- specific database, see Database methods).
 --- @param filename string Filename
---- @return sqlite3.Database
+--- @return sqlite3_Database
 function sqlite3.open(filename) end
 
 
